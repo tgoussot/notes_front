@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.notes-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f9fa; /* Couleur de fond unifiée et plus douce */
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+.notes-sidebar {
+  width: 320px;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sidebar-header h1 {
+  font-size: 22px;
+  margin: 0;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.sidebar-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-btn.logout {
+  background-color: #e74c3c;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.action-btn.logout:hover {
+  background-color: #c0392b;
+}
+
+
+.notes-list {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.note-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  transition: all 0.2s ease-in-out;
+  margin: 0 10px;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-item.selected {
+  background-color: #e9ecef; /* Couleur de sélection ajustée */
+  border-left: 4px solid #3498db;
+  color: #2c3e50;
+}
+
+.note-item:hover {
+  background-color: #f1f3f5; /* Couleur de survol ajustée */
+}
+
+.note-item h2 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+
+.note-item-content {
+  overflow: hidden;
+}
+
+.note-item p {
+  margin: 0;
+  font-size: 13px;
+  color: #7f8c8d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-delete-btn {
+  background: transparent;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  opacity: 0.6;
+}
+
+.note-delete-btn:hover {
+  background-color: #fff1f0;
+  opacity: 1;
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(231, 76, 60, 0.35);
+}
+
+.md-editor {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.editor-toolbar {
+  padding: 8px 15px 8px 20px;
+  background-color: #ffffff; /* Fond blanc pour la barre d'outils */
+  border-bottom: 1px solid #dee2e6; /* Bordure plus douce */
+  display: flex;
+  justify-content: space-between; /* Espace entre le titre et le bouton */
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.help-btn {
+  background: none;
+  border: 1px solid #bdc3c7;
+  color: #34495e;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+.help-btn:hover {
+  background-color: #ecf0f1;
+  border-color: #34495e;
+}
+
+.help-btn svg {
+  font-size: 16px;
+}
+
+.editor-panes {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.note-editor-container {
+  flex-grow: 1;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-editor-container .no-note-selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    font-size: 20px;
+    color: #95a5a6;
+    text-align: center;
+}
+.no-note-selected svg {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.editor-header {
+ display: none;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.note-title-input {
+  background: none;
+  border: none;
+  color: #2c3e50;
+  font-size: 24px; /* Taille de police ajustée */
+  font-weight: 600; /* Police un peu moins grasse */
+  padding: 5px 0; /* Espacement ajusté */
+  width: 100%;
+  box-sizing: border-box;
+  flex-grow: 1; /* Permet au titre de prendre l'espace */
+}
+
+.note-title-input:focus {
+  outline: none;
+  background: none; /* Pas de changement de fond au focus */
+}
+
+.md-input {
+  width: 50%;
+  height: 100%;
+  border: none;
+  color: #333;
+  padding: 20px;
+  font-size: 16px;
+  resize: none;
+  background: #ffffff; /* Fond blanc unifié */
+  border-right: 1px solid #dee2e6; /* Bordure plus douce */
+  box-sizing: border-box;
+}
+
+.md-input:focus {
+  outline: none;
+}
+
+.md-preview {
+  width: 50%;
+  height: 100%;
+  background: #ffffff; /* Fond blanc unifié */
+  padding: 20px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Base styles for markdown rendering */
+.md-preview h1,
+.md-preview h2,
+.md-preview h3,
+.md-preview h4,
+.md-preview h5,
+.md-preview h6 {
+  color: #2c3e50;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.md-preview p {
+  line-height: 1.7;
+  color: #34495e;
+  margin-bottom: 15px;
+}
+
+.md-preview a {
+  color: #3498db;
+  text-decoration: none;
+}
+.md-preview a:hover {
+  text-decoration: underline;
+}
+
+.md-preview ul,
+.md-preview ol {
+  padding-left: 30px;
+}
+
+.md-preview blockquote {
+  border-left: 4px solid #e0e0e0;
+  padding-left: 15px;
+  color: #7f8c8d;
+  margin-left: 0;
+}
+
+.md-preview code {
+  background-color: #ecf0f1;
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.md-preview pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.md-preview pre code {
+  background: none;
+  padding: 0;
+}
+
+.md-preview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+.md-preview th, .md-preview td {
+  border: 1px solid #e0e0e0;
+  padding: 10px 12px;
+}
+.md-preview th {
+  background-color: #f7f9fa;
+  font-weight: 600;
+}
