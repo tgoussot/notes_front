@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { FiPlus, FiLogOut, FiFileText, FiTrash2, FiHelpCircle } from 'react-icons/fi';
+import { FiPlus, FiLogOut, FiFileText, FiTrash2, FiHelpCircle, FiArrowLeft } from 'react-icons/fi';
 import './Notes.css';
 import MarkdownHelpModal from './MarkdownHelpModal';
 
@@ -135,7 +135,7 @@ function Notes() {
   if (error) return <div>Erreur: {error}</div>;
 
   return (
-    <div className="notes-container">
+    <div className={`notes-container ${selectedNote ? 'mobile-note-view' : ''}`}>
       <div className="notes-sidebar">
         <div className="sidebar-header">
           <h1>Mes Notes</h1>
@@ -173,6 +173,10 @@ function Notes() {
           <>
             <div className="md-editor">
               <div className="editor-toolbar">
+                <button className="back-btn" onClick={() => setSelectedNoteId(null)}>
+                  <FiArrowLeft />
+                  <span>Retour</span>
+                </button>
                 <input
                   type="text"
                   className="note-title-input"
